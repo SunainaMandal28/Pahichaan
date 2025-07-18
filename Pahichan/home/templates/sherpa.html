@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cultural Elements</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      /* Gradient blending light pink and beige */
+      background: linear-gradient(135deg, #ffe6f0 0%, #f5f0e6 100%);
+      text-align: center;
+      padding: 40px;
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .tab {
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: white;
+      font-weight: bold;
+      color: #0077aa;
+      border: 2px solid transparent;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: 0.3s;
+      user-select: none;
+    }
+
+    .tab:hover {
+      background: #e7f7ff;
+    }
+
+    .tab.active {
+      border: 2px solid #0077aa;
+      background: #d4f0ff;
+    }
+
+    .section {
+      display: none;
+      background: white;
+      max-width: 1000px;
+      margin: auto;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      text-align: left;
+      margin-bottom: 40px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h2 {
+      font-size: 2em;
+      color: #0077aa;
+      margin-bottom: 10px;
+    }
+
+    .section p {
+      color: #444;
+      margin-bottom: 15px;
+      line-height: 1.6;
+    }
+
+    .card-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .card {
+      width: 240px;
+      background: #fdf6f8; /* Very light pinkish beige */
+      border-radius: 20px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-title {
+      font-weight: bold;
+      color: #333;
+      font-size: 1.1em;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 8px;
+      background: #0077aa;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #005f8e;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
+      text-align: left;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal h3 {
+      margin: 10px 0;
+      color: #0077aa;
+    }
+
+    .modal label {
+      font-weight: bold;
+    }
+
+    .modal select {
+      padding: 6px;
+      width: 100%;
+      margin-bottom: 15px;
+    }
+
+    @media (max-width: 700px) {
+      .card-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Cultural Elements</h1>
+
+<div class="tabs">
+  <div class="tab active" onclick="showSection('story')">📖 Storytelling</div>
+  <div class="tab" onclick="showSection('attire')">👗 Attires</div>
+  <div class="tab" onclick="showSection('food')">🍛 Cuisine</div>
+</div>
+
+<!-- Storytelling Section -->
+<div class="section active" id="story">
+
+<h2>🏔️ The Journey of Tenzing: A Story from the Sherpa Community</h2>
+<p>High among the snowy peaks of the Himalayas, where the air is thin and the mountains touch the heavens, lived a young boy named Tenzing from the Sherpa community.</p>
+<p>From childhood, Tenzing was taught the importance of respect—for the mountains, the spirits, and the people. His father would say, “We Sherpas are the guardians of the high trails, guides to those who seek the summit, and keepers of ancient wisdom.”</p>
+<p>One climbing season, a severe storm trapped a group of mountaineers near the peak. While others hesitated, Tenzing led a daring rescue team through blinding snow and fierce winds.</p>
+<p>His knowledge of the mountains and fearless spirit saved many lives that day. The village later celebrated Tenzing’s courage, honoring the Sherpa tradition of bravery, compassion, and deep connection to the Himalayas.</p>
+<h3>❄️ Moral of the Story</h3>
+<p>The Sherpa community symbolizes courage, wisdom, and harmony with nature. Stories like Tenzing’s remind us that true strength lies in service, respect, and an unbreakable bond with the mountains.</p>
+</div>
+
+<!-- Attire Section -->
+<div class="section" id="attire">
+  <h2>Attires</h2>
+  <p>Traditional clothes worn on various occasions.</p>
+
+  <div class="card-container">
+    <div class="card" onclick="openModal('Sherpa Women’s Traditional Dress', 'https://via.placeholder.com/400x260?text=Sari', 'Rs. 250/day')">
+      <img src="https://via.placeholder.com/240x260?text=Sari" alt="Sari">
+      <div class="card-content">
+        <div class="card-title">Sherpa Women’s Traditional Dress</div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('Festivals (Losar, Dumji)', 'https://via.placeholder.com/400x260?text=Daura', 'Rs. 300/day')">
+      <img src="https://via.placeholder.com/240x260?text=Daura" alt="Daura Suruwal">
+      <div class="card-content">
+        <div class="card-title">Festivals (Losar, Dumji)</div>
+      </div>
+    </div>
+    <div class="card" onclick="openModal('Wedding Attire', 'https://via.placeholder.com/400x260?text=Newari', 'Rs. 400/day')">
+      <img src="https://via.placeholder.com/240x260?text=Newari+Dress" alt="Newari Dress">
+      <div class="card-content">
+        <div class="card-title">Wedding Attire</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Food Section -->
+<div class="section" id="food">
+  <h2>Food (Coming Soon)</h2>
+  <p>Explore traditional Nepali dishes in our upcoming food showcase.</p>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="previewModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImg" src="" alt="">
+    <h3 id="modalTitle"></h3>
+    <p id="modalPrice"></p>
+    <label for="size">Select Size:</label>
+    <select id="size">
+      <option>Small</option>
+      <option>Medium</option>
+      <option>Large</option>
+    </select>
+    <div class="buttons">
+      <button class="btn">Rent</button>
+      <button class="btn">Buy</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openModal(title, img, price) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalImg').src = img;
+    document.getElementById('modalPrice').innerText = price;
+    document.getElementById('previewModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('previewModal').style.display = 'none';
+  }
+
+  function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    // Remove active from all tabs
+    document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+
+    // Show selected section
+    document.getElementById(sectionId).classList.add('active');
+
+    // Activate correct tab
+    const tabs = document.querySelectorAll('.tab');
+    if (sectionId === 'story') tabs[0].classList.add('active');
+    else if (sectionId === 'attire') tabs[1].classList.add('active');
+    else if (sectionId === 'food') tabs[2].classList.add('active');
+  }
+</script>
+
+</body>
+</html>

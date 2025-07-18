@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      background: url("{% static 'Nepali-Culture.jpg' %}") no-repeat center center / cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    #google_translate_element {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      width: 340px;
+      text-align: center;
+      border: 1px solid rgba(14, 14, 14, 0.15);
+      color: black;
+      font-weight: bold;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      font-size: 2em;
+      letter-spacing: 1px;
+      font-weight: bold;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.2);
+      color: #000;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+
+    .login-container input::placeholder {
+      color: #444;
+    }
+
+    .login-container input:focus {
+      background: rgba(255, 255, 255, 0.4);
+      outline: none;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    #togglePassword {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      user-select: none;
+      color: #333;
+      font-size: 1.1em;
+    }
+
+    .login-container button {
+      background: linear-gradient(135deg, #000000, #434343);
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      font-size: 1em;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .login-container button:hover {
+      background: linear-gradient(135deg, #434343, #000000);
+      transform: scale(1.03);
+    }
+
+    .register-link {
+      margin-top: 20px;
+      font-size: 0.95em;
+    }
+
+    .register-link a {
+      color: red;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    .register-link a:hover {
+      color: pink;
+      text-decoration: underline;
+    }
+
+    #errorMsg {
+      color: #ff6b6b;
+      margin-top: 12px;
+      font-size: 0.9em;
+      white-space: pre-line;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Translate -->
+  <div id="google_translate_element"></div>
+
+  <div class="login-container">
+    <h2>LOGIN</h2>
+    <form method="POST" id="loginForm">
+      {% csrf_token %}
+      <input type="text" name="username" placeholder="Username" value="{{ request.POST.username }}" required>
+      <div class="password-wrapper">
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <span id="togglePassword">👁️</span>
+      </div>
+      <button type="submit">Login</button>
+
+      {% if error %}
+        <p id="errorMsg">{{ error }}</p>
+      {% endif %}
+      {% if form.errors %}
+        <p id="errorMsg">
+          {% for field in form %}
+            {% for error in field.errors %}
+              {{ error }}
+            {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+            {{ error }}
+          {% endfor %}
+        </p>
+      {% endif %}
+    </form>
+
+    <div class="register-link">
+      Are you new? <a href="{% url 'registration' %}">Register</a>
+    </div>
+  </div>
+
+  <script>
+    const passwordField = document.getElementById("password");
+    const togglePassword = document.getElementById("togglePassword");
+
+    togglePassword.addEventListener("click", () => {
+      const type = passwordField.type === "password" ? "text" : "password";
+      passwordField.type = type;
+      togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+    });
+  </script>
+
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ne,hi',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>
